@@ -48,7 +48,7 @@ impl<const Y: usize, const D: usize> Day<Y, D> {
 impl<const Y: usize, const D: usize> fmt::Display for Day<Y, D> {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> fmt::Result {
         let parts = vec![
-            format!("[{:04}]Day {:02}", self.year_id, self.day_id),
+            format!("[{:04}] Day {:02}", self.year_id, self.day_id),
             format!("\tPart 1: {:?}", self.solution.part_one),
             format!("\tPart 2: {:?}", self.solution.part_two),
         ];
