@@ -1,0 +1,19 @@
+[package]
+name = "advent-of-code"
+version = "0.1.0"
+edition = "2021"
+default-run = "init-case"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+reqwest = { version = "0.11", features = ["blocking"] }
+clap = { version = "4.3", features = ["derive"] }
+
+[[bin]]
+name = "init-case"
+path = "src/bin/downloader.rs"
+
+[[bin]]
+name = "runner"
+path = "src/bin/runner.rs"
