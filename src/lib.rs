@@ -1,5 +1,5 @@
 pub mod downloader;
-pub mod year_2022;
+mod year_2022;
 
 use std::fmt;
 use std::fs;
