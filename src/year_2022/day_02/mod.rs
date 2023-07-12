@@ -1,4 +1,3 @@
-#![allow(unused)]
 use std::cmp::Ordering;
 
 use strum::{EnumIter, IntoEnumIterator};
@@ -155,7 +154,6 @@ impl Day<2022, 2> {
 
 #[cfg(test)]
 mod tests {
-    #![allow(unused)]
     use std::fs;
 
     use super::*;
