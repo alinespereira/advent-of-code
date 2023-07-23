@@ -6,7 +6,7 @@ use crate::{AdventOfCodeSolver, Day};
 impl AdventOfCodeSolver for Day<2022, 3> {
     fn solve_part_one(&mut self, input: String) {
         let input = self.parse_input(input);
-        let solution = input
+        let solution: usize = input
             .iter()
             .map(|rs| {
                 let common = rs.common_items();
@@ -26,7 +26,7 @@ impl AdventOfCodeSolver for Day<2022, 3> {
                 item.iter().map(|&i| i.score()).collect::<Vec<_>>()
             })
             .collect();
-        let solution: usize = dbg!(solution.iter().flat_map(|it| it.first()).sum());
+        let solution: usize = solution.iter().flat_map(|it| it.first()).sum();
         self.solution.part_two = Some(solution);
     }
 }

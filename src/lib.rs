@@ -10,19 +10,28 @@ pub trait AdventOfCodeSolver {
 }
 
 #[derive(Debug, Default)]
-pub struct Solution {
-    pub part_one: Option<usize>,
-    pub part_two: Option<usize>,
+pub struct Solution<T>
+where
+    T: fmt::Debug + Default + fmt::Display,
+{
+    pub part_one: Option<T>,
+    pub part_two: Option<T>,
 }
 
 #[derive(Debug, Default)]
-pub struct Day<const Y: usize, const D: usize> {
+pub struct Day<const Y: usize, const D: usize, T = usize>
+where
+    T: fmt::Debug + Default + fmt::Display,
+{
     year_id: usize,
     day_id: usize,
-    solution: Solution,
+    solution: Solution<T>,
 }
 
-impl<const Y: usize, const D: usize> Day<Y, D> {
+impl<const Y: usize, const D: usize, T: Default> Day<Y, D, T>
+where
+    T: fmt::Debug + Default + fmt::Display,
+{
     pub fn new() -> Self {
         return Self {
             year_id: Y,
@@ -45,7 +54,10 @@ impl<const Y: usize, const D: usize> Day<Y, D> {
     }
 }
 
-impl<const Y: usize, const D: usize> fmt::Display for Day<Y, D> {
+impl<const Y: usize, const D: usize, T> fmt::Display for Day<Y, D, T>
+where
+    T: fmt::Debug + Default + fmt::Display,
+{
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> fmt::Result {
         let parts = vec![
             format!("[{:04}] Day {:02}", self.year_id, self.day_id),
