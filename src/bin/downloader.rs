@@ -79,14 +79,24 @@ fn main() -> Result<(), AoCDownloaderError> {
     contents.push_str(format!("\n").as_str());
     contents.push_str(format!("    #[test]\n").as_str());
     contents.push_str(format!("    fn it_solves_part_one() {{\n").as_str());
-    contents.push_str(format!("        let mut day: Day<{year}, {day}> = Day::new();\n").as_str());
-    contents.push_str(format!("        todo!();\n").as_str());
+    contents
+        .push_str(format!("        let mut day: Day<{year}, {day}, _> = Day::new();\n").as_str());
+    contents.push_str(format!("        let path = day.get_test_path();\n").as_str());
+    contents.push_str(format!("        let input = fs::read_to_string(path).unwrap();\n").as_str());
+    contents.push_str(format!("        day.solve_part_one(input);\n").as_str());
+    contents.push_str(format!("        assert!(day.solution.part_one.is_some());\n").as_str());
+    contents.push_str(format!("        assert_eq!(day.solution.part_one, None);\n").as_str());
     contents.push_str(format!("    }}\n").as_str());
     contents.push_str(format!("\n").as_str());
     contents.push_str(format!("    #[test]\n").as_str());
     contents.push_str(format!("    fn it_solves_part_two() {{\n").as_str());
-    contents.push_str(format!("        let mut day: Day<{year}, {day}> = Day::new();\n").as_str());
-    contents.push_str(format!("        todo!();\n").as_str());
+    contents
+        .push_str(format!("        let mut day: Day<{year}, {day}, _> = Day::new();\n").as_str());
+    contents.push_str(format!("        let path = day.get_test_path();\n").as_str());
+    contents.push_str(format!("        let input = fs::read_to_string(path).unwrap();\n").as_str());
+    contents.push_str(format!("        day.solve_part_two(input);\n").as_str());
+    contents.push_str(format!("        assert!(day.solution.part_two.is_some());\n").as_str());
+    contents.push_str(format!("        assert_eq!(day.solution.part_two, None);\n").as_str());
     contents.push_str(format!("    }}\n").as_str());
     contents.push_str(format!("}}\n").as_str());
 

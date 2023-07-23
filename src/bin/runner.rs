@@ -10,6 +10,14 @@ macro_rules! run_aoc {
         aoc.solve_part_two(input.clone());
         println!("{}", aoc);
     };
+    (<$t:ty>$year:literal/$day:literal) => {
+        let mut aoc = Day::<$year, $day, $t>::new();
+        let path = aoc.get_input_path();
+        let input: String = std::fs::read_to_string(path).unwrap();
+        aoc.solve_part_one(input.clone());
+        aoc.solve_part_two(input.clone());
+        println!("{}", aoc);
+    };
 }
 
 fn main() {
@@ -17,7 +25,7 @@ fn main() {
     run_aoc!(2022 / 2);
     run_aoc!(2022 / 3);
     run_aoc!(2022 / 4);
-    // run_aoc!(2022 / 5);
+    run_aoc!(<&str>2022 / 5);
     // run_aoc!(2022 / 6);
     // run_aoc!(2022 / 7);
     // run_aoc!(2022 / 8);
